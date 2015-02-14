@@ -33,7 +33,8 @@ object Build extends Build {
 
   lazy val dockerSettings = Seq(
     dockerBaseImage := "dockerfile/java",
-    dockerExposedPorts in Docker := Seq(9999)
+    dockerExposedPorts in Docker := Seq(9999),
+    stagingDirectory in Docker := new java.io.File("docker")
   )
 
   lazy val generalSettings = Seq() ++ sbtSettings ++ dockerSettings
@@ -44,7 +45,7 @@ object Build extends Build {
       Deps.typesafeDeps
   )
 
-  lazy val TwitterApp = Project(id = "DockerApp", base = file("."))
+  lazy val DockerApp = Project(id = "DockerApp", base = file("."))
     .settings(generalSettings: _*)
     .settings(generalDeps: _*)
     .enablePlugins(JavaAppPackaging)
