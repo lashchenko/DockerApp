@@ -33,8 +33,8 @@ object Build extends Build {
 
   lazy val dockerSettings = Seq(
     dockerBaseImage := "dockerfile/java",
-    dockerExposedPorts in Docker := Seq(9999),
-    stagingDirectory in Docker := new java.io.File("docker")
+    dockerExposedPorts in Docker := Seq(9999)
+//    stagingDirectory in Docker := new java.io.File("docker")
   )
 
   lazy val generalSettings = Seq() ++ sbtSettings ++ dockerSettings
